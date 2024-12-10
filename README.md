@@ -1,0 +1,59 @@
+#include <ncurses/ncurses.h>
+#include <string>
+using namespace std;
+
+int main(){
+    initscr();
+    cbreak();
+    noecho();
+    curs_set(0);
+    double saldo = 0.0;
+    double pemasukan = 0.0;
+    double pengeluaran = 0.0;
+
+    while(true){
+        clear();
+        printw("Pengatur Keuangan Keluarga\n");
+        printw("--------------------------\n");
+        printw("Saldo saat ini: %.2f\n", saldo);
+        printw("\n Pilih aksi yang akan dilakukan :\n");
+        printw("1. Tambah Pemasukan\n");
+        printw("2. Tambah Pengeluaran\n");
+        printw("3. Keluar\n");
+
+        int pilihan = 0;
+        printw("\n Masukkan pilihan (1-3): ");
+        scanw("%d", &pilihan);
+
+        if(pilihan == 1){
+            clear();
+            printw("Masukkan jumlah pemasukan: ");
+            scanw("%lf", &pemasukan);
+
+            saldo += pemasukan;
+            printw("\n Pemasukan %.2f telah ditambahkan ke saldo.\n", pemasukan);
+            printw("Tekan tombol apapun untuk kembali ke menu...");
+            getch();
+        }else if(pilihan == 2){
+            clear();
+            printw("Masukkan jumlah pengeluaran: ");
+            scanw("%lf", &pengeluaran);
+
+            saldo -= pengeluaran;
+            printw("\n Pengeluaran %.2f telah dikurangi dari saldo.\n", pengeluaran);
+            printw("Tekan tombol apapun untuk kembali ke menu...");
+            getch();
+        }else if (pilihan == 3){
+            clear();
+            break;
+        }else{
+            clear();
+            printw("Pilihan tidak valid! Pilih antara 1 hingga 3.\n");
+            printw("Tekan tombol apapun untuk kembali ke menu...");
+            getch();
+        }
+    }
+
+    endwin();
+    return 0;
+}
