@@ -34,7 +34,7 @@ int main(){
             printw("\n Pemasukan %.2f telah ditambahkan ke saldo.\n", pemasukan);
             printw("Tekan tombol apapun untuk kembali ke menu...");
             getch();
-        }else if(pilihan == 2{
+        }else if(pilihan == 2){
             clear();
             printw("Masukkan jumlah pengeluaran: ");
             scanw("%lf", &pengeluaran);
